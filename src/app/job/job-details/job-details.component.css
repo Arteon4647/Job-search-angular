@@ -1,0 +1,36 @@
+.wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid blue;
+    border-radius: 8px;
+    background-color: lightgray;
+    box-shadow: 0 5px 10px blue;
+  }
+  
+  img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+  }
+  
+  h4 {
+    margin-bottom: 10px;
+    text-align: center;
+    color: black;
+  }
+  
+  h5 {
+    margin-bottom: 10px;
+    text-align: center;
+    color: black;
+  }
+  
+  span {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    color: black;
+  }
