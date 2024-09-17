@@ -5,19 +5,22 @@
   <img [src]="job.employer_logo" />
   <h4>{{ job.job_title }}</h4>
   <h5>{{ job.employer_name }}</h5>
-  <span>Salary: {{ job.job_min_salary }}$ - {{ job.job_max_salary }}$ in {{job.job_salary_period}}</span>
-  <p>Description: {{job.job_description}}</p>
-  <p>Benefits: {{job.job_benefits}}</p>
-  <p>Your experience: {{job.job_required_experience}}</p>
-  <p>Your skills: {{job.job_required_skills}}</p>
-  <p>Location: {{job.job_country}}, {{job.job_city}}</p>
-  
+  <span
+    >Salary: {{ job.job_min_salary }}$ - {{ job.job_max_salary }}$ in
+    {{ job.job_salary_period }}</span
+  >
+  <p>Description: {{ job.job_description }}</p>
+  <p>Benefits: {{ job.job_benefits }}</p>
+  <p>Your experience: {{ job.job_required_experience }}</p>
+  <p>Your skills: {{ job.job_required_skills }}</p>
+  <p>Location: {{ job.job_country }}, {{ job.job_city }}</p>
+
   @if(jobService.checkIfJobIsLike(job.job_id)) {
-    <button mat-button (click)="jobService.dislikeJob(job)">
-      Remove From Liked
-    </button>
-    } @else {
-    <button mat-button (click)="jobService.likeJob(job)">Like job</button>
-    }
+  <button mat-button (click)="jobService.dislikeJob(job)">
+    Remove From Liked
+  </button>
+  } @else {
+  <button mat-button (click)="jobService.likeJob(job)">Like job</button>
+  }
 </div>
 }

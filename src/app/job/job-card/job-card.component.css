@@ -1,18 +1,23 @@
 .job-card {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .job-text {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-button-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.job-image{
-    object-fit: contain;
+.job-image {
+  object-fit: contain;
+}
+
+.highest {
+  font-size: small;
+  color: darkred;
 }

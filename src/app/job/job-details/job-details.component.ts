@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 @Component({
   selector: 'app-job-details',
   standalone: true,
-  imports: [MatCardModule,MatButtonModule, RouterLink],
+  imports: [MatCardModule, MatButtonModule, RouterLink],
   templateUrl: './job-details.component.html',
   styleUrl: './job-details.component.css',
 })
@@ -16,6 +16,8 @@ export class JobDetailsComponent implements OnInit {
   constructor(public jobService: JobService) {}
 
   job?: JobType;
+
+  jobDate = new Date();
 
   ngOnInit(): void {
     const jobId = window.location.pathname.split('/').at(-1);

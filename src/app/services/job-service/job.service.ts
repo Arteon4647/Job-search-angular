@@ -152,15 +152,23 @@ export class JobService {
   }
 
   getJobById(jobId: string) {
-    return this.jobs.find((job) => job.job_id === jobId)
+    return this.jobs.find((job) => job.job_id === jobId);
   }
 
   getJobs(query: string) {
-    return;
     return this.httpClient
       .get(`${this.API_URL}search?query=${query}`, { headers: this.headers })
       .subscribe((response: any) => {
         this.jobs = response.data;
       });
+  }
+
+  getHighestRateJob(jobs: JobType[]) {
+    const maxSalary = Math.max.apply(
+      null,
+      jobs.map((job) => job.job_max_salary || 0)
+    );
+
+    return jobs.find((job) => job.job_max_salary === maxSalary);
   }
 }

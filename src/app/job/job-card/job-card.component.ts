@@ -4,11 +4,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { JobService } from '../../services/job-service/job.service';
 import { RouterLink } from '@angular/router';
+import { JobStatusPipe } from '../../pipes/job-status/job-status.pipe';
+import { JobMaxSalaryPipe } from '../../pipes/job-max-salary/job-max-salary.pipe';
 
 @Component({
   selector: 'app-job-card',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, RouterLink],
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    RouterLink,
+    JobStatusPipe,
+    JobMaxSalaryPipe,
+  ],
   templateUrl: './job-card.component.html',
   styleUrl: './job-card.component.css',
 })
@@ -17,11 +25,14 @@ export class JobCardComponent {
 
   constructor(public jobService: JobService) {}
 
+  defaultJobImageUrl =
+    'https://static.vecteezy.com/system/resources/previews/015/981/122/original/job-posting-icon-design-free-vector.jpg';
+
   onVisit(url: string) {
     window.open(url);
   }
 
   getDetailsLink(jobId: string) {
-    return `/job-details/${jobId}`
+    return `/job-details/${jobId}`;
   }
 }

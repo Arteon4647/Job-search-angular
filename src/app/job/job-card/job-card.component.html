@@ -7,35 +7,50 @@
         >{{ job.job_min_salary }}$ -
         {{ job.job_max_salary }}$</mat-card-subtitle
       >
-      <img mat-card-sm-image [src]="job.employer_logo" class="job-image"/>
+      <img
+        mat-card-sm-image
+        [src]="job.employer_logo || defaultJobImageUrl"
+        class="job-image"
+      />
     </mat-card-title-group>
   </mat-card-header>
   <mat-card-content>
     <article class="job-text">
-      <span>Required education: {{ job.job_required_education }}</span>
+      <!-- <p>{{job.job_id | jobStatus}}</p> -->
+      <span>Required publisher: {{ job.job_publisher }}</span>
       <span>Benefits: {{ job.job_benefits }}</span>
     </article>
   </mat-card-content>
   <mat-card-footer>
     <mat-card-actions class="card-button-wrapper">
       <div>
-      <button mat-button (click)="onVisit(job.job_apply_link)">
-        Visit Link
-      </button>
+        <button mat-button (click)="onVisit(job.job_apply_link)">
+          Visit Link
+        </button>
 
-      @if(jobService.checkIfJobIsLike(job.job_id)) {
+        <!-- @if(jobService.checkIfJobIsLike(job.job_id)) {
       <button mat-button (click)="jobService.dislikeJob(job)">
         Remove From Liked
       </button>
       } @else {
       <button mat-button (click)="jobService.likeJob(job)">Like job</button>
-      }
-    </div>
+      } -->
+        <button
+          mat-button
+          (click)="
+            jobService.checkIfJobIsLike(job.job_id)
+              ? jobService.dislikeJob(job)
+              : jobService.likeJob(job)
+          "
+        >
+          {{ job.job_id | jobStatus }}
+        </button>
+
+        <span class="highest">{{ jobService.jobs | jobMaxSalary : job.job_id }}</span>
+      </div>
 
       <button mat-button>
-        <a [routerLink]="getDetailsLink(job.job_id)">
-        View Details
-      </a>
+        <a [routerLink]="getDetailsLink(job.job_id)"> View Details </a>
       </button>
     </mat-card-actions>
   </mat-card-footer>
